@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Clear extends Component {
-  render() {
-    return (
-      <div className="Clear" onClick={() => this.props.onClearClick()}>
-        AC
-      </div>
-    );
-  }
-}
+const Clear = props => {
+  return (
+    <div className="Clear" onClick={() => props.onClearClick()}>
+      AC
+    </div>
+  );
+};
 
 export default Clear;
