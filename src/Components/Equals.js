@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Equals extends Component {
-  render() {
-    return (
-      <div className="Equals" onClick={() => this.props.onEqualsClick()}>
-        =
-      </div>
-    );
-  }
-}
+const Equals = props => {
+  return (
+    <div className="Equals" onClick={() => props.onEqualsClick()}>
+      =
+    </div>
+  );
+};
 
 export default Equals;
