@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Screen extends Component {
-  render() {
-    return <div className="Screen">{this.props.display}</div>;
-  }
-}
+const Screen = props => {
+  return <div className="Screen">{props.display}</div>;
+};
 
 export default Screen;
