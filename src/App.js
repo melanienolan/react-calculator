@@ -83,10 +83,10 @@ class App extends Component {
   }
   onEqualsClick() {
     if (this.state.operator.length) {
-      let value1 = +this.state.total;
-      let value2 = +this.state.tempTotal;
+      let total = +this.state.total;
+      let tempTotal = +this.state.tempTotal;
       let op = this.state.operator;
-      let newTotal = this.calculate(value1, value2, op);
+      let newTotal = this.calculate(total, tempTotal, op);
       this.setState({
         total: newTotal,
         onScreen: newTotal,
