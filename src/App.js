@@ -28,7 +28,6 @@ class App extends Component {
       operator: ''
     };
   }
-  removeZero(x) {}
   onNumberClick(number) {
     if (this.state.operator.length) {
       let tempTotal = this.state.tempTotal;
