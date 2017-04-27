@@ -81,6 +81,27 @@ class App extends Component {
       });
     }
   }
+  onDecimalClick() {
+    if (this.state.operator.length) {
+      let tempTotal = this.state.tempTotal;
+      if (tempTotal.indexOf('.') === -1) {
+        tempTotal += '.';
+        this.setState({
+          onScreen: tempTotal,
+          tempTotal: tempTotal
+        });
+      }
+    } else {
+      let total = this.state.total;
+      if (total.indexOf('.') === -1) {
+        total += '.';
+        this.setState({
+          total: total,
+          onScreen: total
+        });
+      }
+    }
+  }
   onEqualsClick() {
     if (this.state.operator.length) {
       let total = +this.state.total;
@@ -111,6 +132,7 @@ class App extends Component {
           operators={operators}
           onNumberClick={number => this.onNumberClick(number)}
           onOperatorClick={operator => this.onOperatorClick(operator)}
+          onDecimalClick={() => this.onDecimalClick()}
           onEqualsClick={() => this.onEqualsClick()}
         />
         <Clear onClearClick={() => this.onClearClick()} />
