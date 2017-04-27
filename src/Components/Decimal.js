@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Equals = props => {
-  const equalsStyles = {
+const Decimal = props => {
+  const decimalStyles = {
     width: '50px',
     height: '50px',
     display: 'flex',
@@ -13,10 +13,10 @@ const Equals = props => {
     fontSize: '20px'
   };
   return (
-    <div style={equalsStyles} onClick={() => props.onEqualsClick()}>
-      =
+    <div style={decimalStyles} onClick={() => props.onDecimalClick()}>
+      .
     </div>
   );
 };
 
-export default Equals;
+export default Decimal;

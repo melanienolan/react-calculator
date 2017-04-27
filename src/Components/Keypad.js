@@ -2,6 +2,7 @@ import React from 'react';
 import Number from './Number';
 import Operator from './Operator';
 import Equals from './Equals';
+import Decimal from './Decimal';
 
 const Keypad = props => {
   const keypadStyles = {
@@ -39,6 +40,7 @@ const Keypad = props => {
     <div style={keypadStyles}>
       <div style={nHolderStyles}>
         {numbers}
+        <Decimal onDecimalClick={() => props.onDecimalClick()} />
         <Equals onEqualsClick={() => props.onEqualsClick()} />
       </div>
       <div style={oHolderStyles}>{operators}</div>
