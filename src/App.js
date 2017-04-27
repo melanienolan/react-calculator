@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import Screen from './Components/Screen';
 import Keypad from './Components/Keypad';
+import Clear from './Components/Clear';
 import './App.css';
 
 const operators = ['+', '-', '*', '/'];
+
+const appStyles = {
+  backgroundColor: 'thistle',
+  width: '300px',
+  margin: '50px auto',
+  padding: '10px',
+  borderRadius: '10px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  flexDirection: 'column'
+};
 
 class App extends Component {
   constructor() {
@@ -15,8 +28,10 @@ class App extends Component {
     };
   }
   onNumberClick(number) {
-    let total = (this.state.total += number);
-    let tempTotal = (this.state.tempTotal += number);
+    let total = this.state.total;
+    total += number;
+    let tempTotal = this.state.tempTotal;
+    tempTotal += number;
     this.setState({
       total: total,
       onScreen: tempTotal,
@@ -61,15 +76,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div style={appStyles}>
         <Screen display={this.state.onScreen} />
         <Keypad
           operators={operators}
           onNumberClick={number => this.onNumberClick(number)}
           onOperatorClick={operator => this.onOperatorClick(operator)}
           onEqualsClick={() => this.onEqualsClick()}
-          onClearClick={() => this.onClearClick()}
         />
+        <Clear onClearClick={() => this.onClearClick()} />
       </div>
     );
   }
