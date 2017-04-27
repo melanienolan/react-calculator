@@ -15,7 +15,8 @@ const appStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  cursor: 'pointer'
 };
 
 class App extends Component {
@@ -59,12 +60,35 @@ class App extends Component {
       return value1 / value2;
     }
   }
+  // onOperatorClick(operator) {
+  //   if (this.state.operator.length) {
+  //     let value1 = +this.state.total;
+  //     let value2 = +this.state.tempTotal;
+  //     let op = this.state.operator;
+  //     let newTotal = this.calculate(value1, value2, op);
+  //     this.setState({
+  //       total: newTotal,
+  //       onScreen: operator,
+  //       tempTotal: '',
+  //       operator: operator
+  //     });
+  //   } else {
+  //     let total = this.state.total;
+  //     total = +total;
+  //     this.setState({
+  //       total: total,
+  //       onScreen: operator,
+  //       tempTotal: '',
+  //       operator: operator
+  //     });
+  //   }
+  // }
   onOperatorClick(operator) {
+    let total = +this.state.total;
     if (this.state.operator.length) {
-      let value1 = +this.state.total;
-      let value2 = +this.state.tempTotal;
+      let tempTotal = +this.state.tempTotal;
       let op = this.state.operator;
-      let newTotal = this.calculate(value1, value2, op);
+      let newTotal = this.calculate(total, tempTotal, op);
       this.setState({
         total: newTotal,
         onScreen: operator,
@@ -72,16 +96,12 @@ class App extends Component {
         operator: operator
       });
     } else {
-      let total = this.state.total;
-      // if (this.isValidQuery(total)) {
-      total = +total;
       this.setState({
         total: total,
         onScreen: operator,
         tempTotal: '',
         operator: operator
       });
-      // }
     }
   }
   onEqualsClick() {
