@@ -2,10 +2,29 @@ import React from 'react';
 import Number from './Number';
 import Operator from './Operator';
 import Equals from './Equals';
-import Clear from './Clear';
 
 const Keypad = props => {
-  let numbers = [...Array(10).keys()].map(i => (
+  const keypadStyles = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '260px',
+    padding: '20px'
+  };
+  const nHolderStyles = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignContent: 'center'
+  };
+  const oHolderStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  };
+  let numbers = [...Array(10).keys()];
+  let shifted = numbers.shift();
+  numbers.push(shifted);
+  numbers = numbers.map(i => (
     <Number number={i} key={i} onNumberClick={i => props.onNumberClick(i)} />
   ));
   let operators = props.operators.map(i => (
@@ -17,11 +36,13 @@ const Keypad = props => {
   ));
 
   return (
-    <div className="Keypad">
-      {numbers}
-      {operators}
-      <Equals onEqualsClick={() => props.onEqualsClick()} />
-      <Clear onClearClick={() => props.onClearClick()} />
+    <div style={keypadStyles}>
+      <div style={nHolderStyles}>
+        {numbers}
+        <Equals onEqualsClick={() => props.onEqualsClick()} />
+      </div>
+      <div style={oHolderStyles}>{operators}</div>
+
     </div>
   );
 };
