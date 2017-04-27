@@ -13,7 +13,7 @@ const Decimal = props => {
     fontSize: '20px'
   };
   return (
-    <div style={decimalStyles} onClick={() => props.onDecimalClick()}>
+    <div style={decimalStyles} onClick={props.onDecimalClick}>
       .
     </div>
   );

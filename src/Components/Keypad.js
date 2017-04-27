@@ -40,8 +40,8 @@ const Keypad = props => {
     <div style={keypadStyles}>
       <div style={nHolderStyles}>
         {numbers}
-        <Decimal onDecimalClick={() => props.onDecimalClick()} />
-        <Equals onEqualsClick={() => props.onEqualsClick()} />
+        <Decimal onDecimalClick={props.onDecimalClick} />
+        <Equals onEqualsClick={props.onEqualsClick} />
       </div>
       <div style={oHolderStyles}>{operators}</div>
 

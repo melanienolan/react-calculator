@@ -13,7 +13,7 @@ const Clear = props => {
     color: 'white'
   };
   return (
-    <div style={clearStyles} onClick={() => props.onClearClick()}>
+    <div style={clearStyles} onClick={props.onClearClick}>
       AC
     </div>
   );

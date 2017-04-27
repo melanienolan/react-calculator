@@ -13,7 +13,7 @@ const Equals = props => {
     fontSize: '20px'
   };
   return (
-    <div style={equalsStyles} onClick={() => props.onEqualsClick()}>
+    <div style={equalsStyles} onClick={props.onEqualsClick}>
       =
     </div>
   );
