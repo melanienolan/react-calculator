@@ -22,12 +22,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      total: '',
-      onScreen: '',
+      total: '0',
+      onScreen: '0',
       tempTotal: '',
       operator: ''
     };
   }
+  removeZero(x) {}
   onNumberClick(number) {
     if (this.state.operator.length) {
       let tempTotal = this.state.tempTotal;
@@ -37,17 +38,12 @@ class App extends Component {
         tempTotal: tempTotal
       });
     } else {
-      let total = this.state.total;
+      let total = this.state.total === '0' ? '' : this.state.total;
       total += number;
       this.setState({
         total: total,
         onScreen: total
       });
-    }
-  }
-  isValidQuery(x) {
-    if (typeof +x[0] === 'number' && typeof +x[x.length - 1] === 'number') {
-      return true;
     }
   }
   calculate(value1, value2, op) {
@@ -78,15 +74,15 @@ class App extends Component {
       });
     } else {
       let total = this.state.total;
-      if (this.isValidQuery(total)) {
-        total = +total;
-        this.setState({
-          total: total,
-          onScreen: operator,
-          tempTotal: '',
-          operator: operator
-        });
-      }
+      // if (this.isValidQuery(total)) {
+      total = +total;
+      this.setState({
+        total: total,
+        onScreen: operator,
+        tempTotal: '',
+        operator: operator
+      });
+      // }
     }
   }
   onEqualsClick() {
@@ -105,8 +101,8 @@ class App extends Component {
   }
   onClearClick() {
     this.setState({
-      total: '',
-      onScreen: '',
+      total: '0',
+      onScreen: '0',
       tempTotal: '',
       operator: ''
     });
