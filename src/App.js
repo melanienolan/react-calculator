@@ -60,29 +60,6 @@ class App extends Component {
       return value1 / value2;
     }
   }
-  // onOperatorClick(operator) {
-  //   if (this.state.operator.length) {
-  //     let value1 = +this.state.total;
-  //     let value2 = +this.state.tempTotal;
-  //     let op = this.state.operator;
-  //     let newTotal = this.calculate(value1, value2, op);
-  //     this.setState({
-  //       total: newTotal,
-  //       onScreen: operator,
-  //       tempTotal: '',
-  //       operator: operator
-  //     });
-  //   } else {
-  //     let total = this.state.total;
-  //     total = +total;
-  //     this.setState({
-  //       total: total,
-  //       onScreen: operator,
-  //       tempTotal: '',
-  //       operator: operator
-  //     });
-  //   }
-  // }
   onOperatorClick(operator) {
     let total = +this.state.total;
     if (this.state.operator.length) {
