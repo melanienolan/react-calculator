@@ -68,15 +68,28 @@ class App extends Component {
     }
   }
   onOperatorClick(operator) {
-    let total = this.state.total;
-    if (this.isValidQuery(total)) {
-      total = Number(total);
+    if (this.state.operator.length) {
+      let value1 = Number(this.state.total);
+      let value2 = Number(this.state.tempTotal);
+      let op = this.state.operator;
+      let newTotal = this.calculate(value1, value2, op);
       this.setState({
-        total: total,
+        total: newTotal,
         onScreen: operator,
         tempTotal: '',
         operator: operator
       });
+    } else {
+      let total = this.state.total;
+      if (this.isValidQuery(total)) {
+        total = Number(total);
+        this.setState({
+          total: total,
+          onScreen: operator,
+          tempTotal: '',
+          operator: operator
+        });
+      }
     }
   }
   onEqualsClick() {
