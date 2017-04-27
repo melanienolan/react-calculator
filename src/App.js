@@ -24,19 +24,26 @@ class App extends Component {
     this.state = {
       total: '',
       onScreen: '',
-      tempTotal: ''
+      tempTotal: '',
+      operator: ''
     };
   }
   onNumberClick(number) {
-    let total = this.state.total;
-    total += number;
-    let tempTotal = this.state.tempTotal;
-    tempTotal += number;
-    this.setState({
-      total: total,
-      onScreen: tempTotal,
-      tempTotal: tempTotal
-    });
+    if (this.state.operator.length) {
+      let tempTotal = this.state.tempTotal;
+      tempTotal += number;
+      this.setState({
+        onScreen: tempTotal,
+        tempTotal: tempTotal
+      });
+    } else {
+      let total = this.state.total;
+      total += number;
+      this.setState({
+        total: total,
+        onScreen: total
+      });
+    }
   }
   isValidQuery(x) {
     if (
@@ -46,32 +53,52 @@ class App extends Component {
       return true;
     }
   }
+  calculate(value1, value2, op) {
+    if (op === '+') {
+      return value1 + value2;
+    }
+    if (op === '-') {
+      return value1 - value2;
+    }
+    if (op === '*') {
+      return value1 * value2;
+    }
+    if (op === '/') {
+      return value1 / value2;
+    }
+  }
   onOperatorClick(operator) {
     let total = this.state.total;
     if (this.isValidQuery(total)) {
-      total = eval(total).toString();
-      total = total += operator;
+      total = Number(total);
       this.setState({
         total: total,
         onScreen: operator,
-        tempTotal: ''
+        tempTotal: '',
+        operator: operator
       });
     }
   }
   onEqualsClick() {
-    let total = this.state.total;
-    total = eval(total).toString();
-    this.setState({
-      total: total,
-      onScreen: total,
-      tempTotal: ''
-    });
+    if (this.state.operator.length) {
+      let value1 = Number(this.state.total);
+      let value2 = Number(this.state.tempTotal);
+      let op = this.state.operator;
+      let newTotal = this.calculate(value1, value2, op);
+      this.setState({
+        total: newTotal,
+        onScreen: newTotal,
+        tempTotal: '',
+        operator: ''
+      });
+    }
   }
   onClearClick() {
     this.setState({
       total: '',
       onScreen: '',
-      tempTotal: ''
+      tempTotal: '',
+      operator: ''
     });
   }
   render() {
