@@ -46,10 +46,7 @@ class App extends Component {
     }
   }
   isValidQuery(x) {
-    if (
-      typeof Number(x[0]) === 'number' &&
-      typeof Number(x[x.length - 1]) === 'number'
-    ) {
+    if (typeof +x[0] === 'number' && typeof +x[x.length - 1] === 'number') {
       return true;
     }
   }
@@ -69,8 +66,8 @@ class App extends Component {
   }
   onOperatorClick(operator) {
     if (this.state.operator.length) {
-      let value1 = Number(this.state.total);
-      let value2 = Number(this.state.tempTotal);
+      let value1 = +this.state.total;
+      let value2 = +this.state.tempTotal;
       let op = this.state.operator;
       let newTotal = this.calculate(value1, value2, op);
       this.setState({
@@ -82,7 +79,7 @@ class App extends Component {
     } else {
       let total = this.state.total;
       if (this.isValidQuery(total)) {
-        total = Number(total);
+        total = +total;
         this.setState({
           total: total,
           onScreen: operator,
@@ -94,8 +91,8 @@ class App extends Component {
   }
   onEqualsClick() {
     if (this.state.operator.length) {
-      let value1 = Number(this.state.total);
-      let value2 = Number(this.state.tempTotal);
+      let value1 = +this.state.total;
+      let value2 = +this.state.tempTotal;
       let op = this.state.operator;
       let newTotal = this.calculate(value1, value2, op);
       this.setState({
