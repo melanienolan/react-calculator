@@ -31,17 +31,18 @@ class App extends Component {
   }
   onNumberClick(number) {
     if (this.state.operator.length) {
-      let tempTotal = this.state.tempTotal;
+      let { tempTotal } = this.state;
       tempTotal += number;
       this.setState({
         onScreen: tempTotal,
-        tempTotal: tempTotal
+        tempTotal
       });
     } else {
-      let total = this.state.total === '0' ? '' : this.state.total;
+      let { total } = this.state;
+      total = total === '0' ? '' : total;
       total += number;
       this.setState({
-        total: total,
+        total,
         onScreen: total
       });
     }
@@ -60,30 +61,30 @@ class App extends Component {
       return value1 / value2;
     }
   }
-  onOperatorClick(operator) {
-    let total = +this.state.total;
-    if (this.state.operator.length) {
-      let tempTotal = +this.state.tempTotal;
-      let op = this.state.operator;
-      let newTotal = this.calculate(total, tempTotal, op);
+  onOperatorClick(op) {
+    let { total, tempTotal, operator } = this.state;
+    total = +total;
+    tempTotal = +tempTotal;
+    if (operator.length) {
+      let newTotal = this.calculate(total, tempTotal, operator);
       this.setState({
         total: newTotal,
-        onScreen: operator,
+        onScreen: op,
         tempTotal: '',
-        operator: operator
+        operator: op
       });
     } else {
       this.setState({
-        total: total,
-        onScreen: operator,
+        total,
+        onScreen: op,
         tempTotal: '',
-        operator: operator
+        operator: op
       });
     }
   }
   onDecimalClick() {
     if (this.state.operator.length) {
-      let tempTotal = this.state.tempTotal;
+      let { tempTotal } = this.state;
       if (tempTotal.indexOf('.') === -1) {
         tempTotal += '.';
         this.setState({
@@ -92,22 +93,22 @@ class App extends Component {
         });
       }
     } else {
-      let total = this.state.total;
+      let { total } = this.state;
       if (total.indexOf('.') === -1) {
         total += '.';
         this.setState({
-          total: total,
+          total,
           onScreen: total
         });
       }
     }
   }
   onEqualsClick() {
-    if (this.state.operator.length) {
-      let total = +this.state.total;
-      let tempTotal = +this.state.tempTotal;
-      let op = this.state.operator;
-      let newTotal = this.calculate(total, tempTotal, op);
+    let { total, tempTotal, operator } = this.state;
+    total = +total;
+    tempTotal = +tempTotal;
+    if (operator.length) {
+      let newTotal = this.calculate(total, tempTotal, operator);
       this.setState({
         total: newTotal,
         onScreen: newTotal,
