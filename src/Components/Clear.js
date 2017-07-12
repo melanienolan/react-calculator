@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Clear = props => {
   const clearStyles = {
@@ -18,5 +19,7 @@ const Clear = props => {
     </div>
   );
 };
-
+Clear.propTypes = {
+  onClearClick: PropTypes.func
+};
 export default Clear;
