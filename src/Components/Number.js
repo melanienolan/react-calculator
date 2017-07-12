@@ -22,7 +22,7 @@ const Number = props => {
 
 Number.propTypes = {
   onNumberClick: PropTypes.func,
-  number: PropTypes.num
+  number: PropTypes.number
 };
 
 export default Number;
