@@ -108,7 +108,7 @@ class App extends Component {
     total = +total;
     tempTotal = +tempTotal;
     if (operator.length) {
-      let newTotal = this.calculate(total, tempTotal, operator);
+      let newTotal = this.calculate(total, tempTotal, operator).toString();
       this.setState({
         total: newTotal,
         onScreen: newTotal,
