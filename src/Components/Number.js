@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Number = props => {
   const numberStyles = {
@@ -17,6 +18,11 @@ const Number = props => {
       {props.number}
     </div>
   );
+};
+
+Number.propTypes = {
+  onNumberClick: PropTypes.func,
+  number: PropTypes.num
 };
 
 export default Number;
