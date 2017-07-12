@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Screen = props => {
   const screenStyles = {
@@ -15,7 +16,15 @@ const Screen = props => {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   };
-  return <div style={screenStyles}>{props.display}</div>;
+  return (
+    <div style={screenStyles}>
+      {props.display}
+    </div>
+  );
+};
+
+Screen.propTypes = {
+  display: PropTypes.string
 };
 
 export default Screen;
