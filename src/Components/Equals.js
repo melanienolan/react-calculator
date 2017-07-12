@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Equals = props => {
   const equalsStyles = {
@@ -17,6 +18,10 @@ const Equals = props => {
       =
     </div>
   );
+};
+
+Equals.propTypes = {
+  onEqualsClick: PropTypes.func
 };
 
 export default Equals;
