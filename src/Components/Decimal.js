@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Decimal = props => {
   const decimalStyles = {
@@ -17,6 +18,10 @@ const Decimal = props => {
       .
     </div>
   );
+};
+
+Decimal.propTypes = {
+  onDecimalClick: PropTypes.func
 };
 
 export default Decimal;
