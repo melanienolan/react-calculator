@@ -98,11 +98,13 @@ class App extends Component {
       }
     } else {
       let { total } = this.state;
+      total = this.state.equalsPressed ? '0' : total;
       if (total.indexOf('.') === -1) {
         total += '.';
         this.setState({
           total,
-          onScreen: total
+          onScreen: total,
+          equalsPressed: false
         });
       }
     }
