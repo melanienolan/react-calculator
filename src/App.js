@@ -39,23 +39,14 @@ class App extends Component {
         tempTotal
       });
     } else {
-      if (this.state.equalsPressed) {
-        let total = '';
-        total += number;
-        this.setState({
-          total,
-          onScreen: total,
-          equalsPressed: false
-        });
-      } else {
-        let { total } = this.state;
-        total = total === '0' ? '' : total;
-        total += number;
-        this.setState({
-          total,
-          onScreen: total
-        });
-      }
+      let { total } = this.state;
+      total = total === '0' || this.state.equalsPressed ? '' : total;
+      total += number;
+      this.setState({
+        total,
+        onScreen: total,
+        equalsPressed: false
+      });
     }
   }
   calculate(value1, value2, op) {
