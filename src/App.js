@@ -26,7 +26,8 @@ class App extends Component {
       total: '0',
       onScreen: '0',
       tempTotal: '',
-      operator: ''
+      operator: '',
+      equalsPressed: false
     };
   }
   onNumberClick(number) {
@@ -38,13 +39,23 @@ class App extends Component {
         tempTotal
       });
     } else {
-      let { total } = this.state;
-      total = total === '0' ? '' : total;
-      total += number;
-      this.setState({
-        total,
-        onScreen: total
-      });
+      if (this.state.equalsPressed) {
+        let total = '';
+        total += number;
+        this.setState({
+          total,
+          onScreen: total,
+          equalsPressed: false
+        });
+      } else {
+        let { total } = this.state;
+        total = total === '0' ? '' : total;
+        total += number;
+        this.setState({
+          total,
+          onScreen: total
+        });
+      }
     }
   }
   calculate(value1, value2, op) {
@@ -71,14 +82,16 @@ class App extends Component {
         total: newTotal,
         onScreen: op,
         tempTotal: '',
-        operator: op
+        operator: op,
+        equalsPressed: false
       });
     } else {
       this.setState({
         total,
         onScreen: op,
         tempTotal: '',
-        operator: op
+        operator: op,
+        equalsPressed: false
       });
     }
   }
@@ -113,7 +126,8 @@ class App extends Component {
         total: newTotal,
         onScreen: newTotal,
         tempTotal: '',
-        operator: ''
+        operator: '',
+        equalsPressed: true
       });
     }
   }
@@ -122,7 +136,8 @@ class App extends Component {
       total: '0',
       onScreen: '0',
       tempTotal: '',
-      operator: ''
+      operator: '',
+      equalsPressed: false
     });
   }
   render() {
